@@ -1,9 +1,9 @@
 from __future__ import annotations
 from typing import Any, Dict, List
 
-from csv_writer import CSVWriter
-from helpers import read_csv_as_dicts, parse_date
-from config import SimulationConfig
+from deltares_model.csv_writer import CSVWriter
+from deltares_model.helpers import read_csv_as_dicts, parse_date
+from deltares_model.config import SimulationConfig
 
 
 class HydrologyModel:

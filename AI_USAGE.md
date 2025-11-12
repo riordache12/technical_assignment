@@ -29,21 +29,31 @@ Example (filled sample — for guidance)
 Note: This is an example to illustrate expected content and depth. Replace with your own notes when you complete the exercise.
 
 1) Tools used
-- ChatGPT (web) for drafting ....
-- GitHub Copilot in editor for ....
+- Copilot for programming
+- ChatGPT used to understand the problem
 
 2) Prompt(s)
-- Prompt 1 (to ChatGPT): "..."
-- Prompt 2 (to ChatGPT): "..."
+- Prompt 1 (to ChatGPT): "I want to create a small Python script that calculates a daily water balance and a conservative tracer concentration across two linked river reaches. 
+                          I have the precipitation, evapotranspiration and recession factor, as well as the tracer upstream value for 7 days in one file and the reach in square km and tracer_init values in another"
+- Prompt 2 (to Copilot): "create a class that allows me to write to a csv rows based on the following headers: "date", "reach", "q_m3s", "c_mgL"" (headers in legacy_results.csv)
+- Prompt 3 (to Copilot): "create a function that parses a date stored in a csv cell (multiple formats possible) and returns a datetime object"
+- Prompt 4 (to Copilot): I asked it to generate tests for the respective files
 
 3) AI output kept vs. modified
-- Kept: ...  
-- Modified: ...  
+- Kept: 
+  - on Prompt 2, I've kept the write function and ignored the functions that would add an individual row, as it provided me an entire standalone script
+  - on Prompt 3, kept most of the function as seen in the code. I thought it was nicely extendable in case more formats would have to be added.
+- Modified:
+  - on Prompt 2, I removed the input variables from the init and added them to the write function where I also added a @staticmethod decorator, as I am 
+  not expecting to reuse that Writer more than once 
 - Marked in code with `# AI-ASSIST:` near the relevant function/test.
 
 4) Manual correction or improvement (required)
-- AI suggested .... in one draft. I corrected this to ....
+- On Prompt 2, AI suggested using the very broad Exception as a handling error. I've modified it to ValueError.
 
 5) Reflection
-- Went well: Using AI to .... saved time; only good starting for .... but needed manual changes to ....  
-- Misleading: The first suggestion for .... was misleading but by ..... I was able to get the right answer.
+- Went well: Having no hydrology experience, I used AI to understand the problem and get an explanation of the terms and formulas
+- Went well: 
+- Misleading: In the parametrization of the test 'test_parse_date_multiple_formats', the AI chose the current date (12/11/2025),
+which failed the tests for some of the formats, because the date can still be also a month. I changed the date in order to make the
+test pass.
