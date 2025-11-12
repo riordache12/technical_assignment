@@ -27,7 +27,7 @@ Core tasks (both Junior & Medior)
    - Use parametrized tests or property‑based tests where appropriate.
 4) Style & Typing
    - Pass ruff, black, and mypy --strict on src/tests.
-   - Tweak pyproject.toml config if needed (but keep it reasonable).
+   - Tweak pyproject.toml config§ if needed (but keep it reasonable).
 5) Docs
    - Create a new README.md with all the assumptions, equations, and how to run the new refactored package locally and 
      in CI.
