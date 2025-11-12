@@ -1,13 +1,14 @@
 import csv
+from typing import List, Dict, Any
 from datetime import datetime
 
-def read_csv_as_dicts(path):
+def read_csv_as_dicts(path: str) -> List[Dict[str, Any]]:
     with open(path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         return [row for row in reader]
 
 # AI-ASSIST:
-def parse_date(date_str):
+def parse_date(date_str: str) -> datetime:
     formats = [
         "%Y-%m-%d",      # 2025-11-12
         "%d/%m/%Y",      # 12/11/2025
