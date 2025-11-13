@@ -3,7 +3,7 @@ name = "deltares-model"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Radu Iordache",email = "riordache12@gmail.com"}
+    { name = "Radu Iordache", email = "riordache12@gmail.com" }
 ]
 readme = "README.md"
 requires-python = ">=3.14"
@@ -16,8 +16,14 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "deltares_model", from = "src"}]
+packages = [
+    { include = "deltares_model", from = "deltares-model/src" }
+]
+
+[tool.poetry.scripts]
+hydrology = "deltares_model.cli:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+

@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional
 from datetime import datetime
 
-from deltares_model.csv_writer import CSVWriter
 from deltares_model.helpers import read_csv_as_dicts, parse_date
 from deltares_model.config import SimulationConfig
 
@@ -10,7 +9,6 @@ from deltares_model.config import SimulationConfig
 class HydrologyModel:
     @staticmethod
     def runoff_to_discharge(mm_per_day: float, area_km2: float) -> float:
-        print(mm_per_day, area_km2)
         if area_km2 == 0:
             return 0.0
         else:
@@ -110,15 +108,3 @@ class Simulation:
                         tracer_init_mgL=float(reaches[1]['tracer_init_mgL']),
                         beta=self.beta)
         return self.process_rows(forcing, reach_a, reach_b)
-
-
-def main():
-    config = SimulationConfig()  # uses defaults
-    sim = Simulation(config)
-    rows = sim.run()
-    CSVWriter.write(config.output_path, rows)
-    print(f"Wrote {len(rows)} rows to {config.output_path}")
-
-
-if __name__ == "__main__":
-    main()
